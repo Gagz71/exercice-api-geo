@@ -35,12 +35,64 @@ $('form').submit(function(e){
                 //Code lu en cas de succès
                 if(data.length > 0){ //S'il y a au moins une ligne dans le tableau contenant les données demandés
 
-                    //Message de succès
-                    $('#view').html('<p class="success">Ville trouvée !</p>');
-
                     console.log(data);
 
-                    //
+                    //Message de succès
+                    $('form').prepend('<p class="success">Résultat: 1 !</p>');
+
+                    //Création d'un tableau HTML 
+                    let cityToFindTable = $(`
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Code postaux</th>
+                                <th>Population</th>
+                                <th>Departement</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    `);
+
+                    //Pour chaque ville dans le tableau data reçu en requête ajax
+                    data.forEach(function(city){
+
+                        //Création de la <tr></tr> de la ville actuelle demandé
+                        let newCity = $('<tr></tr>');
+
+                        //Création <td></td> contenant le nom de la ville
+                        let cityName = $('<td></td>');
+                        cityName.text(city.nom);
+
+                        //Création <td></td> contenant le code postal de la ville
+                        let cityPost = $('<td></td>');
+                        cityPost.text(city.code);
+
+                        //Création du <td></td> contenant la population de la ville
+                        let cityPop = $('<td></td>');
+                        cityPop.text(city.population);
+
+                        //Création du <td></td> contenant le département de la vill
+                        let cityDept = $('<td></td>');
+                        cityDept.text(city.codeDepartement);
+
+                        //Insertion des <td></td> dans la <tr></tr>
+                        newCity.append(cityName);
+                        newCity.append(cityPost);
+                        newCity.append(cityPop);
+                        newCity.append(cityDept);
+
+
+                        //Insertion de la <tr></tr> dans le <tbody></tbody>
+                        cityToFindTable.find('tbody').append(newCity);
+
+                    });
+                    
+
+                    //Insertion du tableau dans la div.view
+                    $('#view').html(cityToFindTable);
 
                     
 
