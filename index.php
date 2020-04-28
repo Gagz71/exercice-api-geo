@@ -4,36 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercice Api Geo</title>
-    <style>
-        body{
-            text-align: center;
-        }
-        #view{
-            border: 2px solid black;
-            min-height: 300px;
-            width: 50%;
-            margin: auto;
-            margin-top: 30px;
-            padding: 1rem;
-        }
-        .overlay{
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(0, 0, 0, 0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .error{
-            color: red;
-        }
-        .success{
-            color: green;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
